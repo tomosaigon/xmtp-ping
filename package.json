@@ -1,0 +1,59 @@
+{
+  "name": "xmtp-ping",
+  "version": "0.0.1",
+  "description": "Command to send a gm to a gm bot over XMTP and measure the time in milliseconds to receive a response.",
+  "main": "dist/index.js",
+  "bin": {
+    "xmtp-ping": "dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node  --trace-warnings dist/index.js",
+    "format": "prettier --write \"src/**/*.(js|ts)\"",
+    "lint": "eslint src --ext .js,.ts",
+    "lint:fix": "eslint src --fix --ext .js,.ts",
+    "test": "jest --config jest.config.js --runInBand ",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomosaigon/xmtp-ping.git"
+  },
+  "keywords": [
+    "typescript",
+    "xmtp",
+    "ping",
+    "bot",
+    "cli"
+  ],
+  "author": "Tomo Saigon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomosaigon/xmtp-ping/issues"
+  },
+  "homepage": "https://github.com/tomosaigon/xmtp-ping",
+  "devDependencies": {
+    "@types/jest": "29.4.0",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.52.0",
+    "eslint": "8.35.0",
+    "eslint-plugin-jest": "27.2.1",
+    "jest": "29.4.3",
+    "mock-stdin": "^1.0.0",
+    "prettier": "2.8.4",
+    "ts-jest": "29.0.5",
+    "typescript": "4.9.5"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "@xmtp/xmtp-js": "^10.2.1",
+    "xmtp-bot-cli": "^0.0.4"
+  }
+}
